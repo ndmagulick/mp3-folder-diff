@@ -1,2 +1,5 @@
 # Ignore executables
 *.exe
+
+# Ignore personal text file
+testDirectoryNames.txt
