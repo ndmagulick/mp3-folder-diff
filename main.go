@@ -5,6 +5,7 @@ import (
 	"os"
 )
 
+// TODO - use maps instead of slices since file names are unique
 func main() {
 	const sourceDirectory string = ""
 	const destinationDirectory string = ""
