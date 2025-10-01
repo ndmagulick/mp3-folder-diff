@@ -15,6 +15,13 @@ func main() {
 	var destinationDirectoryEntries []string = readDirectory(destinationDirectory)
 	printEntries(destinationDirectoryEntries)
 
+	filesToBeRemoved := findFolderDiff(sourceDirectoryEntries, destinationDirectoryEntries)
+	fmt.Println("Files in destination but not source:")
+	printEntries(filesToBeRemoved)
+
+	filesToBeAdded := findFolderDiff(destinationDirectoryEntries, sourceDirectoryEntries)
+	fmt.Println("Files in source but not destination:")
+	printEntries(filesToBeAdded)
 }
 
 func check(e error) {
@@ -41,4 +48,26 @@ func printEntries(entries []string) {
 	for _, entry := range entries {
 		fmt.Println(entry)
 	}
+}
+
+func findFolderDiff(source []string, destination []string) []string {
+
+	var missingEntries []string
+	for _, entry := range destination {
+		if !contains(source, entry) {
+			missingEntries = append(missingEntries, entry)
+		}
+	}
+
+	return missingEntries
+}
+
+func contains(slice []string, value string) bool {
+	for _, element := range slice {
+		if element == value {
+			return true
+		}
+	}
+
+	return false
 }
