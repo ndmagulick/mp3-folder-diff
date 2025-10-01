@@ -5,7 +5,7 @@ import (
 	"os"
 )
 
-// TODO - use maps instead of slices since file names are unique
+// TODO - use maps instead of slices since file names are unique, and would improve efficency
 func main() {
 	const sourceDirectory string = ""
 	const destinationDirectory string = ""
